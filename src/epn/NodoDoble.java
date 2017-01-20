@@ -56,6 +56,11 @@ public class NodoDoble {
 	public void setAnterior(NodoDoble anterior) {
 		this.anterior = anterior;
 	}
+	@Override
+	public String toString() {
+		return "NodoDoble [element=" + element + ", siguiente=" + siguiente.getElement()
+				+ ", anterior=" + anterior.getElement() + "]";
+	}
 
 
 }
