@@ -110,63 +110,64 @@ public NodoDoble buscar(int pos){
 
 
 public void eliminar(String dato){
-    if(inicio!=null){
-              NodoDoble aux=inicio;
-              NodoDoble ant=null;
-              while(aux.getSiguiente()!=inicio){
-                       if(aux.getElement().equalsIgnoreCase(dato)){
-                                 if(ant==null){
-                                          if(aux.getSiguiente()==inicio)
-                                                   inicio=null;
-                                          else{
-                                                   ant=aux.getAnterior();
-                                                   ant.setSiguiente(aux.getSiguiente());
-                                                   aux=aux.getSiguiente();
-                                                   aux.setAnterior(ant);
-                                                   inicio=aux;
-                                                   ant=null;
-                                          }
-                                 }else{
-                                          aux.setAnterior(null);
+	NodoDoble aux=inicio;
+	NodoDoble ant=null;
+	while(aux.getSiguiente()!=inicio){
+		if(aux.getElement().compareToIgnoreCase(dato)==0){
+			if(ant==null){
+				if(aux.getSiguiente()==inicio)
+					inicio=null;
+				else{
+					ant=aux.getAnterior();
+					ant.setSiguiente(aux.getSiguiente());
+					aux=aux.getSiguiente();
+					aux.setAnterior(ant);
+					inicio=aux;
+					ant=null;
+				}
+			}
+			else{
+				aux.setAnterior(null);
+				ant.setSiguiente(aux.getSiguiente());
+				aux=aux.getSiguiente();
+				aux.setAnterior(ant);
+			}
+		}
+		else{
+			ant=aux;
+			aux=aux.getSiguiente();
+		}
+	}
+}
+
+
+public void eliminar(int p){
+             
+                       int cont =1;
+                       NodoDoble aux=inicio;
+                       while((aux.getSiguiente()!=inicio) && (cont<p)){
+                                 cont++;
+                                 aux=aux.getSiguiente();
+                       }
+                       if(cont==1){
+                                 if(aux.getSiguiente()==inicio)
+                                          inicio=null;
+                                 else{
+                                          NodoDoble ant=aux.getAnterior();
                                           ant.setSiguiente(aux.getSiguiente());
                                           aux=aux.getSiguiente();
                                           aux.setAnterior(ant);
+                                          inicio=aux;
                                  }
-              }else{
-                       ant=aux;
-                       aux=aux.getSiguiente();
-              }
-    }
-    }
+                       }else{
+                                 NodoDoble ant=aux.getAnterior();
+                                 aux.setAnterior(null);
+                                 ant.setSiguiente(aux.getSiguiente());
+                                 aux=aux.getSiguiente();
+                                 aux.setAnterior(ant);
+                       }
+              
   }
-
-
-public void eliminar(int pos){
-	 
-    NodoDoble aux=inicio;
-    NodoDoble anterior=null;
-    int contador=1;
-
-    if(pos<1 || pos>=tamaño()){
-        System.out.println("La posicion insertada no es correcta");
-    }else{
-        while(aux!=null){
-            if (pos == contador){
-                if (anterior==null){
-                    inicio = inicio.getSiguiente();
-                }else {
-                    //Actualizamos el anterior
-                    anterior.setSiguiente(aux.getSiguiente());
-                }
-                aux=null;
-            }else{
-                anterior=aux;
-                aux=aux.getSiguiente();
-                contador++;
-            }
-        }
-    }
-}
 
     
 public  void vaciar(){

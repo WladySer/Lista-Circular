@@ -13,7 +13,9 @@ public class Aplicacion {
 		lista.agregarFinal("Lucia");
 		lista.agregarInicio("Juan");
 		lista.agregarInicio("Juana");
-
+		lista.agregarFinal("Lucho");
+		lista.agregarInicio("Pedro");
+		lista.agregarInicio("Sergio");
 		
 		
 		
@@ -28,23 +30,26 @@ public class Aplicacion {
 		else
 			System.out.println("la posicion ingresada no existe.");
 		
-		
+
+		lista.imprimirLista();
 		System.out.println("\nIngrese el nombre que desea buscar");//busqueda por nombre
 		String dat= scn.nextLine();
 		if(lista.buscar(dat)!=null)
 			System.out.println(lista.buscar(dat));
 		else
 			System.out.println("El nombre ingresado no existe.");
-	
+
+		lista.imprimirLista();
 		System.out.println("Ingrese el nombre que desea eliminar.");// eliminar por dato
 		String da = scn.nextLine();
 		if(lista.buscar(da)!=null){
-			lista.eliminaValor(da);
+			lista.eliminar(da);
 			lista.imprimirLista();
 		}
 		else
 			System.out.println("El nombre ingresado no existe.");
-		/*
+
+		lista.imprimirLista();
 		System.out.println("Ingrese la posicion que desea eliminar.");// eliminar por posicion
 		int datoe = scn.nextInt();
 		if(lista.buscar(datoe)!=null){
@@ -54,13 +59,13 @@ public class Aplicacion {
 		else
 			System.out.println("El posicion ingresada no existe.");
 		
-		lisdob.vaciar(); //vaciado de lista
-		if (lisdob.estaVacia())
-			 System.out.println("\nLista vacia");
-		else
-		lisdob.imprimirLista();
-		scn.close();
-		*/
+	    lista.vaciar(); //vaciado de lista
+	if (lista.estaVacia())
+	System.out.println("\nLista vacia");
+	else
+	lista.imprimirLista();
+	scn.close();
+		
 
 	}
 
